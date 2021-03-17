@@ -1,5 +1,6 @@
 
 #include "types.h"
+#include "myDSiMode.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -74,7 +75,7 @@ void memInit(const char* filename)
 	pRomHeader RomHeader = romGetHeader();
 
 		// Allocate buffers and static RAM
-	romBuffer = (u8*)malloc(ROM_BUFFER_SIZE);
+	romBuffer = (u8*)malloc(dsiFeatures() ? ROM_BUFFER_SIZE_LARGE : ROM_BUFFER_SIZE);
 	internalRam = (u8*)malloc(0x10000);
 	staticRam = (u8*)malloc(0x10000);
 	externalEeprom = (u8*)malloc(romEepromSize());

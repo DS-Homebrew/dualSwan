@@ -1,4 +1,5 @@
 #include "types.h"
+#include "myDSiMode.h"
 #include <stdlib.h>
 #include <string.h>
 #include "rom.h"
@@ -60,14 +61,14 @@ void romFillBuffer(u32 offset)
 {
 	curBufferOffset = offset;
 	fseek(wsRom, offset, SEEK_SET);
-	fread(romBuffer, ROM_BUFFER_SIZE, 1, wsRom);
+	fread(romBuffer, dsiFeatures() ? ROM_BUFFER_SIZE_LARGE : ROM_BUFFER_SIZE, 1, wsRom);
 }
 
 u8 romGetByte(u32 offset)
 {
 	// Is the requested byte inside our buffer?
 	if(offset > curBufferOffset)
-		if(offset < curBufferOffset + ROM_BUFFER_SIZE)
+		if(offset < curBufferOffset + (dsiFeatures() ? ROM_BUFFER_SIZE_LARGE : ROM_BUFFER_SIZE))
 			return romBuffer[offset - curBufferOffset];
 
 	// Let's fill the buffer again

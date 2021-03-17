@@ -114,7 +114,7 @@ DEPENDS	:=	$(OFILES:.o=.d)
 # main targets
 #---------------------------------------------------------------------------------
 $(OUTPUT).ds.gba	: 	$(OUTPUT).nds
-$(OUTPUT).nds	:
+$(OUTPUT).nds	: 	$(OUTPUT).arm9
 	ndstool -c $(OUTPUT).nds -9 $(OUTPUT).elf -b $(OUTPUT).bmp "dualSwan v1.2;WonderSwan Emulator;by LiraNuna"
 $(OUTPUT).arm9	:	$(OUTPUT).elf
 $(OUTPUT).elf	:	$(OFILES)

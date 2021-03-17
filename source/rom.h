@@ -28,6 +28,7 @@
 // Pushing it to the limits...
 // I'de appriciate help on how to load bigger games...
 #define ROM_BUFFER_SIZE (2 * 1024 * 1024)
+#define ROM_BUFFER_SIZE_LARGE (4 * 1024 * 1024)
 
 typedef struct ws_romHeaderStruct
 {
