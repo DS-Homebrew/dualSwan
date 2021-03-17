@@ -78,9 +78,9 @@ void videoInit(void) {
 	BG_PALETTE_SUB[17] = RGB15(0x00, 0x1F, 0x00);
 
 	// Init IRQ
-	irqInit();
-	irqEnable(IRQ_VBLANK);
+	//irqInit();
 	irqSet(IRQ_VBLANK, handleVBlank);
+	irqEnable(IRQ_VBLANK);
 }
 
 int main() {
